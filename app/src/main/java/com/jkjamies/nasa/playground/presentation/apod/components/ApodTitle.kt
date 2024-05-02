@@ -14,20 +14,17 @@ import androidx.compose.ui.unit.dp
 import com.jkjamies.nasa.playground.ui.theme.NASAPlaygroundTheme
 
 @Composable
-internal fun ApodTitle(date: String?) {
+internal fun ApodTitle() {
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp),
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
             text = "Astronomy Picture\nof the Day",
             textAlign = TextAlign.Center,
-            style = MaterialTheme.typography.headlineLarge,
+            style = MaterialTheme.typography.headlineMedium,
         )
-        date?.let {
-            Text(text = it)
-        }
     }
 }
 
@@ -35,6 +32,6 @@ internal fun ApodTitle(date: String?) {
 @Composable
 private fun ApodTitlePreview() {
     NASAPlaygroundTheme {
-        ApodTitle("2024-05-05")
+        ApodTitle()
     }
 }

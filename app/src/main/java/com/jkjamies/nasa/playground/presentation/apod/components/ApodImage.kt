@@ -25,7 +25,7 @@ import com.jkjamies.nasa.playground.ui.theme.NASAPlaygroundTheme
 internal fun ApodImage(
     url: String?,
     title: String?,
-    copyright: String?,
+    date: String?,
 ) {
     if (url != null) {
         Box(modifier = Modifier.fillMaxWidth()) {
@@ -33,16 +33,20 @@ internal fun ApodImage(
                 modifier =
                     Modifier
                         .align(Alignment.Center)
-                        .padding(vertical = 24.dp),
+                        .padding(vertical = 8.dp),
                 model = url,
                 contentDescription = title,
                 loading = { CircularProgressIndicator() },
             )
-            Text(
-                modifier = Modifier.align(Alignment.BottomEnd).padding(end = 16.dp, bottom = 4.dp),
-                text = copyright?.let { "© $it" } ?: "",
-                style = MaterialTheme.typography.bodySmall,
-            )
+            date?.let {
+                Text(
+                    modifier =
+                        Modifier.align(Alignment.TopStart)
+                            .padding(start = 32.dp, top = 16.dp),
+                    text = it,
+                    style = MaterialTheme.typography.bodySmall,
+                )
+            }
         }
     } else {
         Column(
@@ -69,7 +73,7 @@ private fun ApodImagePreview() {
         ApodImage(
             url = "https://apod.nasa.gov/apod/image/2203/NGC2244_Hubble_960.jpg",
             title = "NGC 2244: A Star Cluster in the Rosette Nebula",
-            copyright = "NASA, ESA, Hubble",
+            date = "2024-05-01",
         )
     }
 }

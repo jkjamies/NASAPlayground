@@ -21,6 +21,7 @@ kotlinxSerialization = "1.6.3"
 ksp_version = "1.9.23-1.0.20"
 kermit = "2.0.3"
 sqldelight = "2.0.2"
+mockk = "1.13.10"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -41,6 +42,7 @@ android-coil-bom = { group = "io.coil-kt", name = "coil-bom", version.ref = "coi
 android-coil-base = { group = "io.coil-kt", name = "coil-base" }
 android-coil-compose = { group = "io.coil-kt", name = "coil-compose" }
 android-sqldelight-driver = { group = "app.cash.sqldelight", name = "android-driver", version.ref = "sqldelight" }
+android-sqldelight-test-driver = { group = "app.cash.sqldelight", name = "sqlite-driver", version.ref = "sqldelight" }
 junit-kotest = { group = "io.kotest", name = "kotest-runner-junit5", version.ref = "kotest" }
 # KMP-Friendly
 koin-bom = { group = "io.insert-koin", name = "koin-bom", version.ref = "koin" }
@@ -58,6 +60,7 @@ ktor-serialization-json = { group = "io.ktor", name = "ktor-serialization-kotlin
 kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
 kermit = { group = "co.touchlab", name = "kermit", version.ref = "kermit" }
 kermit-koin = { group = "co.touchlab", name = "kermit-koin", version.ref = "kermit" }
+mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

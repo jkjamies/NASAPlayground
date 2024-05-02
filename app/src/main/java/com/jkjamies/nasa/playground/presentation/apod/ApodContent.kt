@@ -18,7 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.jkjamies.nasa.playground.presentation.apod.components.ApodExplaination
+import com.jkjamies.nasa.playground.presentation.apod.components.ApodExplanation
 import com.jkjamies.nasa.playground.presentation.apod.components.ApodImage
 import com.jkjamies.nasa.playground.presentation.apod.components.ApodTitle
 import com.jkjamies.nasa.playground.ui.theme.NASAPlaygroundTheme
@@ -50,11 +50,15 @@ fun ApodContent(innerPadding: PaddingValues = PaddingValues(0.dp)) {
                 is ApodState.Success -> {
                     val apod = (uiState as ApodState.Success).apod
                     Column {
-                        ApodTitle(date = apod.date)
-                        ApodImage(url = apod.url, title = apod.title, copyright = apod.copyright)
+                        ApodTitle()
+                        ApodImage(
+                            url = apod.url,
+                            title = apod.title,
+                            date = apod.date,
+                        )
                         apod.explanation?.let {
-                            ApodExplaination(
-                                clickEnabled = apod.error == null,
+                            ApodExplanation(
+                                clickEnabled = apod.error?.msg == null && apod.error?.code == null,
                                 showDescription = showDescription,
                             ) {
                                 showDescription = !showDescription

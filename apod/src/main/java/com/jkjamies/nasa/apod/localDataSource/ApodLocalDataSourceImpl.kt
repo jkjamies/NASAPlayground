@@ -13,8 +13,8 @@ import org.koin.core.annotation.Single
 @Single(binds = [ApodLocalDataSource::class])
 internal class ApodLocalDataSourceImpl(
     context: Context,
+    private val driver: SqlDriver = AndroidSqliteDriver(ApodDatabase.Schema, context, "apod.db"),
 ) : ApodLocalDataSource {
-    private val driver: SqlDriver = AndroidSqliteDriver(ApodDatabase.Schema, context, "apod.db")
     private val database = ApodDatabase(driver)
 
     override suspend fun getApod(): Apod? {

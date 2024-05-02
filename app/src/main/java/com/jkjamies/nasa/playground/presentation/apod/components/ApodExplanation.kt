@@ -21,7 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-internal fun ApodExplaination(
+internal fun ApodExplanation(
     clickEnabled: Boolean,
     showDescription: Boolean,
     onShowDescriptionClick: () -> Unit,

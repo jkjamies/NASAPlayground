@@ -93,4 +93,6 @@ dependencies {
     // Test
     testImplementation(libs.junit.kotest)
     testImplementation(libs.ktor.client.mock)
+    testImplementation(libs.mockk)
+    testImplementation(libs.android.sqldelight.test.driver)
 }
