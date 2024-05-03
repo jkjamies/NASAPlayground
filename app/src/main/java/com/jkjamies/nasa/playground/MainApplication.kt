@@ -16,7 +16,7 @@ class MainApplication : Application() {
             // Reference Android context
             androidContext(this@MainApplication)
             // Load modules
-            modules(listOf(AppModule().module, contextModule))
+            modules(listOf(contextModule, AppModule().module))
         }
     }
 }

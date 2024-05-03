@@ -32,6 +32,7 @@ fun ApodContent(innerPadding: PaddingValues = PaddingValues(0.dp)) {
 
     LaunchedEffect(Unit) {
         viewModel.getApod()
+        viewModel.getNeos()
     }
 
     LazyColumn(
@@ -42,39 +43,28 @@ fun ApodContent(innerPadding: PaddingValues = PaddingValues(0.dp)) {
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         item {
-            when (uiState) {
-                is ApodState.Idle -> {
-                    // TODO: loading state?
-                }
-
-                is ApodState.Success -> {
-                    val apod = (uiState as ApodState.Success).apod
-                    Column {
-                        ApodTitle()
-                        ApodImage(
-                            url = apod.url,
-                            title = apod.title,
-                            date = apod.date,
-                        )
-                        apod.explanation?.let {
-                            ApodExplanation(
-                                clickEnabled = apod.error?.msg == null && apod.error?.code == null,
-                                showDescription = showDescription,
-                            ) {
-                                showDescription = !showDescription
-                            }
-                        }
-                        AnimatedVisibility(visible = showDescription) {
-                            Text(
-                                text = apod.explanation ?: "Unknown Error Occurred",
-                                modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp),
-                            )
+            uiState.apod?.let { apod ->
+                Column {
+                    ApodTitle()
+                    ApodImage(
+                        url = apod.url,
+                        title = apod.title,
+                        date = apod.date,
+                    )
+                    apod.explanation?.let {
+                        ApodExplanation(
+                            clickEnabled = apod.error?.msg == null && apod.error?.code == null,
+                            showDescription = showDescription,
+                        ) {
+                            showDescription = !showDescription
                         }
                     }
-                }
-
-                is ApodState.Error -> {
-                    // TODO: error state?
+                    AnimatedVisibility(visible = showDescription) {
+                        Text(
+                            text = apod.explanation ?: "Unknown Error Occurred",
+                            modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp),
+                        )
+                    }
                 }
             }
         }

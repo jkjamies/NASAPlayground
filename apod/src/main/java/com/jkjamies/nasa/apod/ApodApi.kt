@@ -7,8 +7,10 @@ import com.jkjamies.nasa.apod.domain.models.Apod
 import com.jkjamies.nasa.apod.domain.usecase.GetApodUseCase
 import kotlinx.coroutines.flow.Flow
 import org.koin.android.ext.koin.androidContext
+import org.koin.core.annotation.ComponentScan
+import org.koin.core.annotation.Module
 import org.koin.dsl.koinApplication
-import org.koin.ksp.generated.defaultModule
+import org.koin.ksp.generated.module
 
 /**
  * API Facade for the Astronomy Picture of the Day
@@ -21,7 +23,7 @@ class ApodApi(context: Context) {
         koinApplication {
             logger(KermitKoinLogger(Logger.withTag("Koin APoD")))
             androidContext(context)
-            defaultModule()
+            modules(ApodModule().module)
         }
 
     /** Use case for getting the Astronomy Picture of the Day */
@@ -34,3 +36,7 @@ class ApodApi(context: Context) {
      */
     suspend fun getApod(): Flow<Apod?> = getApodUseCase()
 }
+
+@Module
+@ComponentScan
+internal class ApodModule

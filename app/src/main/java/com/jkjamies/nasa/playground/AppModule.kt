@@ -1,6 +1,7 @@
 package com.jkjamies.nasa.playground
 
 import com.jkjamies.nasa.apod.ApodApi
+import com.jkjamies.nasa.neos.NeosApi
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.annotation.ComponentScan
 import org.koin.core.annotation.Module
@@ -19,6 +20,9 @@ val contextModule =
         single {
             ApodApi(context = androidContext()) // pass context for sqldelight operations
         }
+        single {
+            NeosApi(context = androidContext()) // pass context for sqldelight operations
+        }
     }
 
 /**
@@ -29,6 +33,7 @@ val contextModule =
 @Single
 internal class NasaApiServices {
     val apodApi: ApodApi = GlobalContext.get().get()
+    val neosApi: NeosApi = GlobalContext.get().get()
 }
 
 @Module

@@ -70,6 +70,7 @@ android.testOptions {
 dependencies {
     // Modules
     implementation(project(":apod"))
+    implementation(project(":neos"))
 
     // Android
     implementation(libs.androidx.core.ktx)

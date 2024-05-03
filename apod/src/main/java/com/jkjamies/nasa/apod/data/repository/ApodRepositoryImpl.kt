@@ -1,5 +1,6 @@
 package com.jkjamies.nasa.apod.data.repository
 
+import co.touchlab.kermit.Logger
 import com.jkjamies.nasa.apod.data.localDataSource.ApodLocalDataSource
 import com.jkjamies.nasa.apod.data.remoteDataSource.ApodRemoteDataSource
 import com.jkjamies.nasa.apod.domain.models.Apod
@@ -26,10 +27,18 @@ internal class ApodRepositoryImpl(
             if (local == null || !isToday(local.date)) {
                 remoteDataSource.getApod()
                     .onSuccess { apod ->
+                        Logger.d("ApodRemoteDataSourceImpl") {
+                            """
+                            Requested Astronomy Picture of the Day:
+                            $apod
+                            """.trimIndent()
+                        }
                         emit(apod)
                         apod?.let { localDataSource.saveApod(it) }
                     }
-                    .onFailure { emit(null) }
+                    .onFailure {
+                        emit(null)
+                    }
             }
         }
 

@@ -1,0 +1,49 @@
+-- Define the schema for the Apod table
+CREATE TABLE IF NOT EXISTS Neos (
+    copyright TEXT,
+    date TEXT,
+    explanation TEXT,
+    hdurl TEXT,
+    media_type TEXT,
+    service_version TEXT,
+    title TEXT,
+    url TEXT,
+    error_code TEXT,
+    error_msg TEXT
+);
+
+-- Retrieve the single saved Apod entry (assuming only one row is present)
+getSavedApod:
+SELECT *
+FROM Neos
+LIMIT 1;
+
+-- Delete all rows from the Apod table
+deleteAllApods:
+DELETE FROM Neos;
+
+-- Replace data in the Apod table
+replaceApod:
+INSERT OR REPLACE INTO Neos (
+    copyright,
+    date,
+    explanation,
+    hdurl,
+    media_type,
+    service_version,
+    title,
+    url,
+    error_code,
+    error_msg
+) VALUES (
+    :copyright,
+    :date,
+    :explanation,
+    :hdurl,
+    :media_type,
+    :service_version,
+    :title,
+    :url,
+    :error_code,
+    :error_msg
+);

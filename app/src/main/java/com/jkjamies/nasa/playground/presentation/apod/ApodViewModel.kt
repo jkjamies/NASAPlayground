@@ -12,16 +12,24 @@ import org.koin.android.annotation.KoinViewModel
 internal class ApodViewModel(
     private val nasaApiServices: NasaApiServices,
 ) : ViewModel() {
-    var state: MutableStateFlow<ApodState> = MutableStateFlow(ApodState.Idle)
+    var state: MutableStateFlow<HomeUiState> = MutableStateFlow(HomeUiState())
         private set
 
     fun getApod() {
         viewModelScope.launch {
-            nasaApiServices.apodApi.getApod().collect { apod ->
-                apod?.let {
-                    state.updateAndGet { ApodState.Success(apod = apod) }
-                } ?: run {
-                    state.updateAndGet { ApodState.Error(message = "No Picture Today") }
+            nasaApiServices.apodApi.getApod().collect { apodResponse ->
+                apodResponse?.let { apod ->
+                    state.updateAndGet { it.copy(apod = apod) }
+                }
+            }
+        }
+    }
+
+    fun getNeos() {
+        viewModelScope.launch {
+            nasaApiServices.neosApi.getNeos().collect { neosResponse ->
+                neosResponse?.let { neos ->
+                    state.updateAndGet { it.copy(neos = neos) }
                 }
             }
         }

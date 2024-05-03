@@ -23,3 +23,4 @@ rootProject.name = "NASA Playground"
 include(":app")
 include(":core")
 include(":apod")
+include(":neos")
