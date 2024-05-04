@@ -18,7 +18,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.jkjamies.nasa.playground.ui.theme.NASAPlaygroundTheme
 
 @Composable
 internal fun ApodExplanation(
@@ -50,4 +52,28 @@ internal fun ApodExplanation(
     HorizontalDivider(
         modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
     )
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun ApodExplanationShowDetailsPreview() {
+    NASAPlaygroundTheme {
+        ApodExplanation(
+            clickEnabled = true,
+            showDescription = false,
+            onShowDescriptionClick = { },
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun ApodExplanationHideDetailsPreview() {
+    NASAPlaygroundTheme {
+        ApodExplanation(
+            clickEnabled = true,
+            showDescription = true,
+            onShowDescriptionClick = { },
+        )
+    }
 }

@@ -20,13 +20,16 @@ import androidx.compose.ui.unit.dp
 import com.jkjamies.nasa.neos.domain.models.NearEarthObject
 
 @Composable
-internal fun NeoCard(neo: NearEarthObject) {
+internal fun NeoCard(
+    neo: NearEarthObject,
+    onNeoClick: (String) -> Unit,
+) {
     Card(
         modifier =
             Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 8.dp),
-        onClick = {},
+        onClick = { neo.id?.let { onNeoClick(it) } },
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
