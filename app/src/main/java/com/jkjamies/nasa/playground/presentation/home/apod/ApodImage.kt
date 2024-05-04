@@ -33,7 +33,7 @@ internal fun ApodImage(
                 modifier =
                     Modifier
                         .align(Alignment.Center)
-                        .padding(vertical = 8.dp),
+                        .padding(vertical = 16.dp),
                 model = url,
                 contentDescription = title,
                 loading = { CircularProgressIndicator() },
