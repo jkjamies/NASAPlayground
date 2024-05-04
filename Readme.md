@@ -13,11 +13,10 @@
 - Favorites that persist either outside of the date ranges or just indicators for an exclusive list
 - Change from DEMO_KEY to a real key, and abstract and hide it properly - also resource the
   endpoints
+- Expand testing, cover more edge cases, and add more unit tests
 
 TODO for finishing short project
 
-- Add unit tests for neos
-- Create ui for neos list on home screen
 - Create ui for neo detail screen
 - Create navigation pattern for screens
 - Create shared ui components between apod and neo details
