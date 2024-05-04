@@ -14,6 +14,7 @@
   endpoints
 - Expand testing, cover more edge cases, and add more unit tests
 - Dimens for padding values instead of hardcoding values all over
+- Automated versioning, release workflow, release notes and tagging
 
 TODO for finishing short project
 
