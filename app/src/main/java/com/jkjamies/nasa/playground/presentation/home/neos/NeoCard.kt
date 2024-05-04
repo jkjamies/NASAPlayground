@@ -57,6 +57,7 @@ internal fun NeoCard(neo: NearEarthObject) {
                     Icon(
                         modifier = Modifier.padding(end = 16.dp),
                         imageVector = Icons.Filled.Warning,
+                        tint = MaterialTheme.colorScheme.error,
                         contentDescription = "View Near Earth Object Details",
                     )
                 }

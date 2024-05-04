@@ -14,6 +14,7 @@
 - Change from DEMO_KEY to a real key, and abstract and hide it properly - also resource the
   endpoints
 - Expand testing, cover more edge cases, and add more unit tests
+- Dimens for padding values instead of hardcoding values all over
 
 TODO for finishing short project
 
