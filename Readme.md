@@ -23,3 +23,21 @@ TODO for finishing short project
 - Create ui for neo detail screen
 - Create shared ui components between apod and neo details
 - Add unit tests and ui tests for app
+
+## NASA Playground Application
+
+Home Screen
+
+| Dark Mode (Default)                                    | Light Mode (Default)                                    |
+|--------------------------------------------------------|---------------------------------------------------------|
+| ![Home_Screen.png](docs/Home_Screen_Dark.png)          | ![Home_Screen_Light.png](docs/Home_Screen_Light.png)    |
+| Dark Mode (Expanded APoD Details)                      | Light Mode (Expanded APoD Details)                      |
+| ![Home_Screen.png](docs/Home_Screen_Dark_Expanded.png) | ![Home_Screen.png](docs/Home_Screen_Light_Expanded.png) |
+
+## Code Quality
+
+Project Pane
+![Qodana_Project_Pane.png](docs/Qodana_Project_Pane.png)
+
+Project Results
+![Qodana_Project_Results.png](docs/Qodana_Project_Results.png)
