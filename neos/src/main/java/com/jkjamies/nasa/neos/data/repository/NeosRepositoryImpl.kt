@@ -19,7 +19,7 @@ internal class NeosRepositoryImpl(
 ) : NeosRepository {
     val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
 
-    override suspend fun getApod(): Flow<NeosResponse?> =
+    override suspend fun getNeos(): Flow<NeosResponse?> =
         flow {
             // emit retained information immediately
             val local = localDataSource.getNeos()

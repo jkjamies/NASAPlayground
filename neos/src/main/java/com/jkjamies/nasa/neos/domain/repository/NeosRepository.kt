@@ -12,5 +12,5 @@ internal interface NeosRepository {
      *
      * @return the Near Earth Objects of the week as a [Flow] of [NeosResponse]
      */
-    suspend fun getApod(): Flow<NeosResponse?>
+    suspend fun getNeos(): Flow<NeosResponse?>
 }

@@ -17,5 +17,5 @@ internal class GetNeosUseCase(
      *
      * @return the Near Earth Objects of the week as a [Flow] of [NeosResponse]
      */
-    suspend operator fun invoke(): Flow<NeosResponse?> = neosRepository.getApod()
+    suspend operator fun invoke(): Flow<NeosResponse?> = neosRepository.getNeos()
 }
