@@ -1,4 +1,4 @@
-package com.jkjamies.nasa.playground.presentation.apod.components
+package com.jkjamies.nasa.playground.presentation.home.apod
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -40,9 +40,7 @@ internal fun ApodImage(
             )
             date?.let {
                 Text(
-                    modifier =
-                        Modifier.align(Alignment.TopStart)
-                            .padding(start = 32.dp, top = 16.dp),
+                    modifier = Modifier.align(Alignment.TopStart),
                     text = it,
                     style = MaterialTheme.typography.bodySmall,
                 )

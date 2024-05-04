@@ -1,4 +1,4 @@
-package com.jkjamies.nasa.playground.presentation.apod.components
+package com.jkjamies.nasa.playground.presentation.shared
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,14 +14,16 @@ import androidx.compose.ui.unit.dp
 import com.jkjamies.nasa.playground.ui.theme.NASAPlaygroundTheme
 
 @Composable
-internal fun ApodTitle() {
+internal fun Title(
+    titleText: String,
+) {
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-            text = "Astronomy Picture\nof the Day",
+            text = titleText,
             textAlign = TextAlign.Center,
             style = MaterialTheme.typography.headlineMedium,
         )
@@ -32,6 +34,6 @@ internal fun ApodTitle() {
 @Composable
 private fun ApodTitlePreview() {
     NASAPlaygroundTheme {
-        ApodTitle()
+        Title("Astronomy Picture\nof the Day")
     }
 }

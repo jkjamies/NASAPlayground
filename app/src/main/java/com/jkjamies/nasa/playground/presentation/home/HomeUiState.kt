@@ -1,4 +1,4 @@
-package com.jkjamies.nasa.playground.presentation.apod
+package com.jkjamies.nasa.playground.presentation.home
 
 import com.jkjamies.nasa.apod.domain.models.Apod
 import com.jkjamies.nasa.neos.domain.models.NeosResponse

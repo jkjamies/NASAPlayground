@@ -1,4 +1,4 @@
-package com.jkjamies.nasa.playground.presentation.apod.components
+package com.jkjamies.nasa.playground.presentation.home.apod
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource

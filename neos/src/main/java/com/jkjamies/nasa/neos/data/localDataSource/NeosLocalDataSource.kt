@@ -14,7 +14,10 @@ internal interface NeosLocalDataSource {
     suspend fun getNeos(): NeosResponse?
 
     /**
-     * Save the [neos] Near Earth Objects of the week
+     * Save the [neos] Near Earth Objects of the week with a tagged last fetch [cachingDate]
      */
-    suspend fun saveNeos(neos: NeosResponse)
+    suspend fun saveNeos(
+        neos: NeosResponse,
+        cachingDate: String,
+    )
 }

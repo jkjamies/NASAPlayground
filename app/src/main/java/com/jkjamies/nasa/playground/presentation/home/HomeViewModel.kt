@@ -1,4 +1,4 @@
-package com.jkjamies.nasa.playground.presentation.apod
+package com.jkjamies.nasa.playground.presentation.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 import org.koin.android.annotation.KoinViewModel
 
 @KoinViewModel
-internal class ApodViewModel(
+internal class HomeViewModel(
     private val nasaApiServices: NasaApiServices,
 ) : ViewModel() {
     var state: MutableStateFlow<HomeUiState> = MutableStateFlow(HomeUiState())

@@ -7,6 +7,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class NeosResponse(
+    val date: String?,
     val links: FeedLinks?,
     val element_count: Int?,
     val near_earth_objects: Map<String, List<NearEarthObject>>?,

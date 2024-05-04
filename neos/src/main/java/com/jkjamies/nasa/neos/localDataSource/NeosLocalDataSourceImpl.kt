@@ -6,7 +6,11 @@ import app.cash.sqldelight.driver.android.AndroidSqliteDriver
 import co.touchlab.kermit.Logger
 import com.jkjamies.nasa.neos.NeosDatabase
 import com.jkjamies.nasa.neos.data.localDataSource.NeosLocalDataSource
+import com.jkjamies.nasa.neos.domain.models.FeedLinks
+import com.jkjamies.nasa.neos.domain.models.NearEarthObject
 import com.jkjamies.nasa.neos.domain.models.NeosResponse
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import org.koin.core.annotation.Single
 
 @Single(binds = [NeosLocalDataSource::class])
@@ -19,18 +23,33 @@ internal class NeosLocalDataSourceImpl(
     override suspend fun getNeos(): NeosResponse? {
         // Retrieve the cached data
         val cachedData =
-            database.neosDatabaseQueries.getSavedApod().executeAsOneOrNull() ?: return null
+            database.neosDatabaseQueries.getSavedNeos().executeAsOneOrNull() ?: return null
         Logger.d("NeosLocalDataSourceImpl") {
             """
             Retrieved cached data: $cachedData
             """.trimIndent()
         }
         // Convert the cached data to the domain model
-        return null
-//        return NeosResponse()
+        return NeosResponse(
+            date = cachedData.date,
+            links =
+                FeedLinks(
+                    next = cachedData.links_next,
+                    prev = cachedData.links_prev,
+                    self = cachedData.links_self,
+                ),
+            element_count = cachedData.element_count?.toInt(),
+            near_earth_objects =
+                cachedData.near_earth_objects_json?.let { json ->
+                    Json.decodeFromString<Map<String, List<NearEarthObject>>?>(json)
+                },
+        )
     }
 
-    override suspend fun saveNeos(neos: NeosResponse) {
+    override suspend fun saveNeos(
+        neos: NeosResponse,
+        cachingDate: String,
+    ) {
         Logger.d("NeosLocalDataSourceImpl") {
             """
             Saving cached data: $neos
@@ -38,9 +57,16 @@ internal class NeosLocalDataSourceImpl(
         }
 
         // Clear the database before saving the new data
-        database.neosDatabaseQueries.deleteAllApods()
+        database.neosDatabaseQueries.deleteNeos()
 
         // Save the new data
-//        database.neosDatabaseQueries.replaceApod()
+        database.neosDatabaseQueries.saveNeos(
+            date = cachingDate,
+            elementCount = neos.element_count?.toLong(),
+            linksNext = neos.links?.next,
+            linksPrev = neos.links?.prev,
+            linksSelf = neos.links?.self,
+            nearEarthObjectsJson = Json.encodeToString(neos.near_earth_objects),
+        )
     }
 }
