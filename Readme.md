@@ -15,6 +15,8 @@
 - Expand testing, cover more edge cases, and add more unit tests
 - Dimens for padding values instead of hardcoding values all over
 - Automated versioning, release workflow, release notes and tagging
+- Qodana automated quick-fixes using `--apply-fixes` or `--cleanup` using `qodana.yaml` in
+  project root directory
 
 TODO for finishing short project
 
