@@ -29,9 +29,8 @@
 
 TODO for finishing short project
 
-- Create ui for neo detail screen
-- Create shared ui components between apod and neo details
 - Add unit tests and ui tests for app
+- Add additional unit test for getNeo by ID
 
 ## NASA Playground Application
 
