@@ -3,6 +3,7 @@ package com.jkjamies.nasa.neos.data.repository
 import co.touchlab.kermit.Logger
 import com.jkjamies.nasa.neos.data.localDataSource.NeosLocalDataSource
 import com.jkjamies.nasa.neos.data.remoteDataSource.NeosRemoteDataSource
+import com.jkjamies.nasa.neos.domain.models.NearEarthObject
 import com.jkjamies.nasa.neos.domain.models.NeosResponse
 import com.jkjamies.nasa.neos.domain.repository.NeosRepository
 import kotlinx.coroutines.flow.Flow
@@ -43,6 +44,14 @@ internal class NeosRepositoryImpl(
                         emit(null)
                     }
             }
+        }
+
+    override suspend fun getNeo(neoId: String): Flow<NearEarthObject?> =
+        flow {
+            // It is either in the local database or there is an error
+            // TODO: consider fetching from remote if not in local,
+            //  but this is not needed for the current use case
+            emit(localDataSource.getNeo(neoId))
         }
 
     /**

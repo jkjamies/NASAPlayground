@@ -69,4 +69,21 @@ internal class NeosLocalDataSourceImpl(
             nearEarthObjectsJson = Json.encodeToString(neos.near_earth_objects),
         )
     }
+
+    override suspend fun getNeo(neoId: String): NearEarthObject? {
+        // Keeping the database simple, we can just fetch the entire cached response
+        // using our defined getNeos() method and then filter the NEOs by ID
+        val neoResponse = getNeos() ?: return null
+        // Get the list of NEOs from the cached data's raw json saved payload
+        val neo =
+            neoResponse.near_earth_objects?.values?.flatten()?.find {
+                it.id == neoId
+            } ?: return null
+        Logger.d("NeosLocalDataSourceImpl") {
+            """
+            Retrieved NEO cached data: $neo
+            """.trimIndent()
+        }
+        return neo
+    }
 }

@@ -17,11 +17,14 @@ internal const val NeoDetailRoute = "neoDetailRoute/$NEO_ID_ARG"
 /**
  * Adds the Neo Detail screen to the navigation graph.
  */
-internal fun NavGraphBuilder.neoDetailScreen() {
+internal fun NavGraphBuilder.neoDetailScreen(onBackClick: () -> Unit) {
     composable(
         route = NeoDetailRoute,
-    ) {
-        NeoDetailContent()
+    ) { backStackEntry ->
+        NeoDetailContent(
+            neoId = checkNotNull(backStackEntry.arguments?.getString(NEO_ID_KEY)),
+            onBackClick = onBackClick,
+        )
     }
 }
 
@@ -30,4 +33,11 @@ internal fun NavGraphBuilder.neoDetailScreen() {
  */
 internal fun NavController.navigateToNeoDetail(neoId: String) {
     this.navigate(NeoDetailRoute.replace(NEO_ID_ARG, neoId))
+}
+
+/**
+ * Navigates back from the Neo Detail screen.
+ */
+internal fun NavController.navigateBackFromNeoDetail() {
+    this.navigateUp()
 }

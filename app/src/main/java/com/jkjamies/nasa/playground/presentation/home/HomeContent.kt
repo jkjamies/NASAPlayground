@@ -20,8 +20,10 @@ import com.jkjamies.nasa.playground.ui.theme.NASAPlaygroundTheme
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun HomeContent(onNeoDetailsClick: (String) -> Unit) {
-    val viewModel = koinViewModel<HomeViewModel>()
+internal fun HomeContent(
+    onNeoDetailsClick: (String) -> Unit,
+    viewModel: HomeViewModel = koinViewModel<HomeViewModel>(),
+) {
     val uiState by viewModel.state.collectAsState()
 
     LaunchedEffect(Unit) {

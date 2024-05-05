@@ -1,3 +1,39 @@
+-- -- Near Earth Objects response table
+-- CREATE TABLE IF NOT EXISTS NeosResponse (
+--     date TEXT PRIMARY KEY,
+--     element_count INTEGER,
+--     links_next TEXT,
+--     links_prev TEXT,
+--     links_self TEXT,
+--     near_earth_objects_json TEXT -- JSON or TEXT field to store the serialized NearEarthObject data
+-- );
+--
+--
+-- -- Get saved Near Earth Objects
+-- getSavedNeos:
+-- SELECT * FROM NeosResponse;
+--
+-- deleteNeos:
+-- -- Delete all Near Earth Objects
+-- DELETE FROM NeosResponse;
+--
+-- -- Function to save NeosResponse
+-- saveNeos:
+-- INSERT OR REPLACE INTO NeosResponse (
+--     date,
+--     element_count,
+--     links_next,
+--     links_prev,
+--     links_self,
+--     near_earth_objects_json
+-- ) VALUES (
+--     :date,
+--     :elementCount,
+--     :linksNext,
+--     :linksPrev,
+--     :linksSelf,
+--     :nearEarthObjectsJson
+-- );
 -- Near Earth Objects response table
 CREATE TABLE IF NOT EXISTS NeosResponse (
     date TEXT PRIMARY KEY,
@@ -8,13 +44,16 @@ CREATE TABLE IF NOT EXISTS NeosResponse (
     near_earth_objects_json TEXT -- JSON or TEXT field to store the serialized NearEarthObject data
 );
 
-
 -- Get saved Near Earth Objects
 getSavedNeos:
 SELECT * FROM NeosResponse;
 
-deleteNeos:
+-- Get Near Earth Object by ID
+getNeoById:
+SELECT * FROM NeosResponse WHERE near_earth_objects_json LIKE '%' || :neoId || '%';
+
 -- Delete all Near Earth Objects
+deleteNeos:
 DELETE FROM NeosResponse;
 
 -- Function to save NeosResponse

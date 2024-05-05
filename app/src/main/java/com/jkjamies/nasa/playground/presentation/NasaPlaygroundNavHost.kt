@@ -10,6 +10,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.jkjamies.nasa.playground.presentation.navigation.HomeRoute
 import com.jkjamies.nasa.playground.presentation.navigation.homeScreen
+import com.jkjamies.nasa.playground.presentation.navigation.navigateBackFromNeoDetail
 import com.jkjamies.nasa.playground.presentation.navigation.navigateToNeoDetail
 import com.jkjamies.nasa.playground.presentation.navigation.neoDetailScreen
 
@@ -30,7 +31,9 @@ internal fun NasaPlaygroundNavHost() {
                 navController.navigateToNeoDetail(neoId)
             }
             // Navigation destination for the Neo Detail screen.
-            neoDetailScreen()
+            neoDetailScreen {
+                navController.navigateBackFromNeoDetail()
+            }
         }
     }
 }

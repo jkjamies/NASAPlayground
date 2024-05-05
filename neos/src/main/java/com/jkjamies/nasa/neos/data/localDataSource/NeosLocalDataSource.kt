@@ -1,5 +1,6 @@
 package com.jkjamies.nasa.neos.data.localDataSource
 
+import com.jkjamies.nasa.neos.domain.models.NearEarthObject
 import com.jkjamies.nasa.neos.domain.models.NeosResponse
 
 /**
@@ -20,4 +21,12 @@ internal interface NeosLocalDataSource {
         neos: NeosResponse,
         cachingDate: String,
     )
+
+    /**
+     * Get the Near Earth Object by a given ID
+     *
+     * @param neoId the ID of the Near Earth Object
+     * @return the Near Earth Object by a given ID as [NearEarthObject]
+     */
+    suspend fun getNeo(neoId: String): NearEarthObject?
 }
