@@ -102,13 +102,18 @@ dependencies {
     implementation(libs.android.coil.compose)
 
     // Test
+    testImplementation(libs.junit)
+    testImplementation(libs.androidx.junit)
     testImplementation(libs.junit.kotest)
+    testImplementation(libs.mockk)
+    testImplementation(libs.koin.test)
 
     // Android Test
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
+    androidTestImplementation(libs.androidx.ui.test.android)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 }

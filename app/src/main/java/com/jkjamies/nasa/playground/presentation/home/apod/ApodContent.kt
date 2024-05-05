@@ -12,6 +12,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.jkjamies.nasa.apod.domain.models.Apod
@@ -42,7 +43,9 @@ internal fun ApodContent(apodState: Apod?) {
             AnimatedVisibility(visible = showDescription) {
                 Text(
                     text = apod.explanation ?: "Unknown Error Occurred",
-                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp),
+                    modifier =
+                        Modifier.padding(horizontal = 16.dp, vertical = 16.dp)
+                            .testTag("apodExplanation"),
                 )
             }
         }

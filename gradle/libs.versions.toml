@@ -39,6 +39,7 @@ androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-ui-test-android = { group = "androidx.compose.ui", name = "ui-test-android" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-compose-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "composeNavigation" }
 android-coil-bom = { group = "io.coil-kt", name = "coil-bom", version.ref = "coil-bom" }
@@ -55,7 +56,8 @@ koin-android = { group = "io.insert-koin", name = "koin-android" }
 koin-annotations-bom = { group = "io.insert-koin", name = "koin-annotations-bom", version.ref = "koinAnnotations" }
 koin-annotations = { group = "io.insert-koin", name = "koin-annotations" }
 koin-ksp-compiler = { group = "io.insert-koin", name = "koin-ksp-compiler" }
-koin-android-compose = { group = "io.insert-koin", name = "koin-androidx-compose" }
+koin-android-compose = { group = "io.insert-koin", name = "koin-androidx-compose" } # android only
+koin-test = { group = "io.insert-koin", name = "koin-test" }
 ktor-client-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
 ktor-client-mock = { group = "io.ktor", name = "ktor-client-mock", version.ref = "ktor" }
 ktor-client-okhttp = { group = "io.ktor", name = "ktor-client-okhttp", version.ref = "ktor" }

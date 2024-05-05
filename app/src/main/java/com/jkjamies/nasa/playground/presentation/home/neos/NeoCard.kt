@@ -15,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.jkjamies.nasa.neos.domain.models.CloseApproachData
@@ -35,7 +36,8 @@ internal fun NeoCard(
         modifier =
             Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 8.dp),
+                .padding(horizontal = 8.dp)
+                .testTag("neoCard"),
         onClick = { neo.id?.let { onNeoClick(it) } },
     ) {
         Row(

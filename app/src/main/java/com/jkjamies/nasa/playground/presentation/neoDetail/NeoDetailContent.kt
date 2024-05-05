@@ -1,6 +1,5 @@
 package com.jkjamies.nasa.playground.presentation.neoDetail
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,8 +18,8 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
@@ -69,7 +68,7 @@ internal fun NeoDetailContent(
             },
         ) { innerPadding ->
             LazyColumn(
-                modifier = Modifier.padding(innerPadding),
+                modifier = Modifier.padding(innerPadding).testTag("neoDetailContent"),
             ) {
                 // This lottie file required a workaround to maintain the aspect ratio
                 // as there contained large buffers of space on top and bottom
@@ -83,7 +82,8 @@ internal fun NeoDetailContent(
                         modifier =
                             Modifier
                                 .fillMaxWidth()
-                                .aspectRatio(lottieAspectRatio),
+                                .aspectRatio(lottieAspectRatio)
+                                .testTag("earthAnimationLottie"),
                         composition = earthAnimComposition,
                         iterations = LottieConstants.IterateForever,
                     )
@@ -93,6 +93,7 @@ internal fun NeoDetailContent(
                     // Each NeoDetailText composable is a row of data to format the text
                     Box {
                         LottieAnimation(
+                            modifier = Modifier.testTag("neoAnimationLottie"),
                             contentScale = ContentScale.FillBounds,
                             composition = neoAnimComposition,
                             iterations = LottieConstants.IterateForever,
